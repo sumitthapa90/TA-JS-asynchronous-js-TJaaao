@@ -66,6 +66,10 @@ console.log("Third");
 6. Convert the synchronous code given below into asynchronous. If you execute this code it will print one, two and three. Change the code in such a way that it should print `one`, `three` and `two`. You are not allowed to move the code up and down.
 
 ```js
+console.log('one');
+setTimeout(() => console.log("two"), 0);
+console.log('three');
+
 console.log("one");
 console.log("two");
 console.log("three");
@@ -74,6 +78,12 @@ console.log("three");
 7. Convert the synchronous code given below into asynchronous. If you execute this code it will print one, two and three. Change the code in such a way that it should print `one`, `three` and `two`. You are not allowed to move the code up and down.
 
 ```js
+
+console.log('one');
+setTimeout(() => console.log("two"), 0);
+console.log('three');
+
+
 console.log("one");
 console.log("two");
 console.log("three");
@@ -82,8 +92,10 @@ console.log("three");
 8. Write a function named `asyncForEach` that is similar to `forEach`. But `asyncForEach` is asynchronous in nature rather than synchronous.
 
 ```js
-funciton asyncForEach(){
-  //
+function asyncForEach(arr){
+  setTimeout(function () { 
+    arr.forEach(num => console.log(num)
+    )}, 0);
 }
 //  Output of the function below should be
 // one
