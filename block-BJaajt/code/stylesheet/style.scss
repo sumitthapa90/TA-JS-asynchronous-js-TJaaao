@@ -1,28 +1,32 @@
 @import "reset";
 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
 body {
   background-color: orange;
 }
 
-input {
-  margin-top: 2rem;
-  width: 200px;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid;
-}
 img {
-  width: 200px;
-  border-radius: 50%;
+  width: 500px;
+  border-radius: 40%;
   margin-top: 2rem;
 }
 h2 {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-}
-p {
-  margin-bottom: 1rem;
-  font-weight: 600;
 }
