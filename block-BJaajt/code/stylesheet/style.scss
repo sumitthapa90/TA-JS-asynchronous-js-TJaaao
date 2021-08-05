@@ -1,0 +1,22 @@
+@import "reset";
+
+body {
+  background-color: orange;
+}
+h3 {
+  font-size: 2rem;
+}
+
+img {
+  border-radius: 50%;
+  width: 200px;
+  margin-top: 2rem;
+}
+button {
+  margin-top: 2rem;
+  padding: 1rem;
+  width: 200px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid;
+}
