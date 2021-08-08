@@ -140,10 +140,6 @@ table {
           box-sizing: border-box;
 }
 
-.container {
-  width: 80%;
-}
-
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -158,6 +154,11 @@ body {
   margin: 0 auto;
 }
 
+header {
+  font-size: 2rem;
+  color: orangered;
+}
+
 h1 {
   background-color: black;
   color: white;
@@ -167,7 +168,7 @@ h1 {
 }
 
 input {
-  width: 200px;
+  width: 500px;
   padding: 0.7rem;
   font-size: 1.5rem;
   text-align: center;
