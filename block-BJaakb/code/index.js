@@ -47,11 +47,15 @@ fetchAll(url)
 
 function handleSearch(event) {
   if (event.keyCode === 13 && searchElm.value) {
-    fetch(searchUrl(searchElm.value), (searchResult) => {
-      displayImage(searchResult.results);
-    });
+    fetch(searchUrl(searchElm.value))
+      .then((searchResult) => {
+        displayImage(searchResult.results);
+      })
+      .catch((error) => console.log("Error"));
+
+    searchElm.value = "";
+    
   }
 }
 
 searchElm.addEventListener("keyup", handleSearch);
-
