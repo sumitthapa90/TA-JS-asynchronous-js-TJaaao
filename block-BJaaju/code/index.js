@@ -1,46 +1,42 @@
-// https://api.unsplash.com/photos/random//?client_id=ynqk72nYe6V4f4sgSvz_7QUFHG8VBxAC1uR-XcsaVAY
-
-let container = document.querySelector(".container");
-let input = document.querySelector("input");
+// https://api.unsplash.com/photos/?client_id=ynqk72nYe6V4f4sgSvz_7QUFHG8VBxAC1uR-XcsaVAY
 
 const url =
-  "https://api.unsplash.com/photos/random/?client_id=ynqk72nYe6V4f4sgSvz_7QUFHG8VBxAC1uR-XcsaVAY";
+  "https://api.unsplash.com/photos/?client_id=ynqk72nYe6V4f4sgSvz_7QUFHG8VBxAC1uR-XcsaVAY";
 
-const GetSearchUrl = (query) => {
+const searchUrl = (query) => {
   return `https://api.unsplash.com/search/photos/?query=${query}&client_id=YYJ9Yzc0iLISY4UhTxDC187x_cZDkS9btvhGQBcTghs`;
 };
+const root = document.querySelector(".images");
+let searchElm = document.querySelector("input");
 
-function fetchData(url, handler) {
+function fetch(url, successHandler) {
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url);
-  xhr.onload = () => handler(JSON.parse(xhr.response));
-
+  xhr.onload = () => successHandler(JSON.parse(xhr.response));
   xhr.onerror = function () {
-    alert("Someting went wrong");
+    alert("Something Went Wrong");
   };
   xhr.send();
 }
 
-function displayUI(image) {
-  container.innerHTML = "";
-  image.forEach((element) => {
+function displayImage(images) {
+  root.innerHTML = "";
+  images.forEach((image) => {
     let li = document.createElement("li");
     let img = document.createElement("img");
-    img.src = element.url.small;
+    img.src = image.urls.thumb;
     li.append(img);
-    container.append(li);
+    root.append(li);
   });
 }
+fetch(url, displayImage);
 
-fetchData(url, displayUI);
-
-function handleClick(event) {
-  if (event.keyCode === 13 && input.value) {
-    fetch(GetSearchUrl(input.value), (searchResult) => {
-      displayUI(searchResult);
+function handleSearch(event) {
+  if (event.keyCode === 13 && searchElm.value) {
+    fetch(searchUrl(searchElm.value), (searchResult) => {
+      displayImage(searchResult.results);
     });
   }
 }
 
-input.addEventListener("keyup", handleClick);
-
+searchElm.addEventListener("keyup", handleSearch);

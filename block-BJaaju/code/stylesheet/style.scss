@@ -2,8 +2,24 @@
 
 //css
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.container {
+  width: 80%;
+}
+
+.flex {
+  display: flex;
+}
 body {
   background-color: skyblue;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
 }
 h1 {
   background-color: black;
@@ -19,7 +35,9 @@ input {
   text-align: center;
   border-radius: 10px;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   border: 1px solid;
 }
-
-
+img {
+  width: 200px;
+}
