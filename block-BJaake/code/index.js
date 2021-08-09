@@ -1,48 +1,41 @@
-// const url = `https://api.spaceflightnewsapi.net/v3/articles?_limit=30`;
+const url = "https://api.spaceflightnewsapi.net/v3/articles?_limit=30";
 
-let display = document.querySelector(".display");
+let elm = document.querySelector(".news");
 
-let source = document.querySelector("#source");
+//   <li>
+//         <img src="./morning-2243465__340.webp" alt="" />
+//         <div>
+//           <span class="source">NASA</span>
+//           <h3>
+//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+//             modi consequatur, facere natus asperiores iste.
+//           </h3>
+//           <button>READ MORE</button>
+//         </div>
+//       </li>
 
-function handleChange(event) {
-  document.querySelector(".display").innerHTML = "";
-  let data2 = fetch("https://api.spaceflightnewsapi.net/v3/articles?_limit=30")
-    .then((res) => res.json())
-    .then((userData) =>
-      userData.forEach((data) => {
-        if (data.newsSite == event.target.value) {
-          createUI(data);
-        }
-      })
-    );
+function displayUINews(news) {
+  news.forEach((newsItem) => {
+    let li = document.createElement("li");
+    let img = document.createElement("img");
+    img.src = newsItem.imageUrl;
+    img.alt = newsItem.title;
+    let div = document.createElement("div");
+    let span = document.createElement("span");
+    span.classList.add("option");
+    span.innerText = newsItem.newsSite;
+    let h3 = document.createElement("h3");
+    h3.innerText = newsItem.summary;
+    let a = document.createElement("a");
+    let button = document.createElement("button");
+    button.innerText = "Read More";
+    a.append(button);
+    a.href = newsItem.url;
+    div.append(span, h3, button);
+    li.append(img, div);
+    elm.append(li);
+  });
 }
-source.addEventListener("change", handleChange);
-
-let data = fetch("https://api.spaceflightnewsapi.net/v3/articles?_limit=30")
+fetch(url)
   .then((res) => res.json())
-  .then((userData) => userData.forEach((data) => createUI(data)));
-
-function createUI(info) {
-  let newsItem = document.createElement("div");
-  let newsImageContainer = document.createElement("aside");
-  let newsImage = document.createElement("img");
-  let article = document.createElement("article");
-  let newsSite = document.createElement("span");
-  let newsHeading = document.createElement("h2");
-  let newsSummary = document.createElement("p");
-  let readMore = document.createElement("a");
-
-  newsItem.setAttribute("class", "article-container");
-  readMore.innerText = "READ MORE...";
-  newsImage.src = info.imageUrl;
-  newsHeading.innerText = info.title;
-  newsSummary.innerText = info.summary;
-  newsSite.innerText = info.newsSite;
-  readMore.href = info.url;
-  readMore.target = "_blank";
-
-  newsImageContainer.append(newsImage);
-  article.append(newsSite, newsHeading, newsSummary, readMore);
-  newsItem.append(newsImageContainer, article);
-  display.append(newsItem);
-}
+  .then((news) => console.log(news));
