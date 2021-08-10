@@ -160,11 +160,13 @@ header {
 
 body {
   line-height: 1.5;
-  background: #65807a;
+  background-image: -webkit-gradient(linear, left top, right top, from(#bdc3c7), to(#2c3e50));
+  background-image: linear-gradient(to right, #bdc3c7, #2c3e50);
 }
 
 img {
   width: 30%;
+  border-radius: 10px;
 }
 
 .select-container {
