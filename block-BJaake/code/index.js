@@ -1,6 +1,8 @@
 const url = "https://api.spaceflightnewsapi.net/v3/articles?_limit=30";
 
 let elm = document.querySelector(".news");
+let select = document.querySelector("select");
+let allNews = [];
 
 //   <li>
 //         <img src="./morning-2243465__340.webp" alt="" />
@@ -15,6 +17,7 @@ let elm = document.querySelector(".news");
 //       </li>
 
 function displayUINews(news) {
+  elm.innerHTML = "";
   news.forEach((newsItem) => {
     let li = document.createElement("li");
     let img = document.createElement("img");
@@ -31,11 +34,33 @@ function displayUINews(news) {
     button.innerText = "Read More";
     a.append(button);
     a.href = newsItem.url;
-    div.append(span, h3, button);
+    div.append(span, h3, a);
     li.append(img, div);
     elm.append(li);
   });
 }
+
+function displayOptions(sources) {
+  sources.forEach((source) => {
+    let option = document.createElement("option");
+    option.innerText = source;
+    option.value = source;
+    select.append(option);
+  });
+}
 fetch(url)
   .then((res) => res.json())
-  .then((news) => console.log(news));
+  .then((news) => {
+    console.log(news);
+    allNews = news;
+    displayUINews(news);
+    let allSources = news.map((n) => n.newsSite);
+    displayOptions(allSources);
+  });
+
+function handleClick(event) {
+  let source = event.target.value;
+  let filterNews = allNews.filter((news) => news.newsSite === source);
+  displayUINews(filterNews);
+}
+select.addEventListener("click", handleClick);
