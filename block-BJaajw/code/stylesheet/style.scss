@@ -71,3 +71,24 @@ h3 {
   font-family: "Caveat", cursive;
   font-size: 2rem;
 }
+
+//
+
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.donut {
+  display: inline-block;
+  border: 4px solid black;
+  border-left-color: #7983ff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: donut-spin 1.2s linear infinite;
+}
