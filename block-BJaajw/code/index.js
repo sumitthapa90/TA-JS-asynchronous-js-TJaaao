@@ -57,7 +57,9 @@ fetch(url)
     let allSources = news.map((n) => n.newsSite);
     displayOptions(allSources);
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    console.log(error);
+  });
 
 function handleClick(event) {
   let source = event.target.value;
