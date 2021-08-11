@@ -2,7 +2,20 @@ const url = "https://api.spaceflightnewsapi.net/v3/articles?_limit=30";
 
 let elm = document.querySelector(".news");
 let select = document.querySelector("select");
+let main = document.querySelector(".main");
+let errorElm = document.querySelector(".error-msg");
 let allNews = [];
+
+function handleErrorMsg(msg = "Something went wrong") {
+  main.style.display = "none";
+  errorElm.innerText = msg;
+}
+
+function handleSpinner(isLoading = false) {
+  if (isLoading) {
+    elm.innerHTML = `<div class="donut"></div>`;
+  }
+}
 
 //   <li>
 //         <img src="./morning-2243465__340.webp" alt="" />
@@ -48,18 +61,20 @@ function displayOptions(sources) {
     select.append(option);
   });
 }
-fetch(url)
-  .then((res) => res.json())
-  .then((news) => {
-    console.log(news);
-    allNews = news;
-    displayUINews(news);
-    let allSources = news.map((n) => n.newsSite);
-    displayOptions(allSources);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+
+function init() {
+  isLoading = true;
+  handleSpinner();
+  fetch(url)
+    .then((res) => res.json())
+    .then((news) => {
+      console.log(news);
+      allNews = news;
+      displayUINews(news);
+      let allSources = news.map((n) => n.newsSite);
+      displayOptions(allSources);
+    });
+}
 
 function handleClick(event) {
   let source = event.target.value;
@@ -67,3 +82,6 @@ function handleClick(event) {
   displayUINews(filterNews);
 }
 select.addEventListener("click", handleClick);
+
+init();
+handleErrorMsg();
