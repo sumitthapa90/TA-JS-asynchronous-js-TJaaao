@@ -169,7 +169,7 @@ img {
   border-radius: 10px;
 }
 
-.select-container {
+.main {
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: -webkit-box;
@@ -183,7 +183,7 @@ img {
           justify-content: center;
 }
 
-.select-container select {
+.main select {
   padding: 1rem;
   font-size: 1.1rem;
 }
@@ -237,7 +237,7 @@ h3 {
 
 .donut {
   display: inline-block;
-  border: 4px solid black;
+  border: 4px solid rgba(0, 0, 0, 0.1);
   border-left-color: #7983ff;
   border-radius: 50%;
   width: 30px;
