@@ -1,0 +1,56 @@
+@import "reset";
+
+// MY CSS
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+body {
+  background-color: #765aac;
+}
+header {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 2rem;
+  h1 {
+    margin-bottom: 2rem;
+  }
+}
+
+.box {
+  width: 300px;
+  background-color: white;
+  padding: 1.5rem;
+
+  border: 1px dashed red;
+}
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+p {
+  margin-top: 1rem;
+}
+button {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
