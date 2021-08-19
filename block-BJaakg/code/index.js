@@ -19,7 +19,7 @@ function displayPopUp(characters) {
     characters.map((elm) => fetch(elm).then((res) => res.json()))
   ).then((data1) =>
     data1.forEach((elm1) => {
-      ``let li = document.createElement("li");
+      let li = document.createElement("li");
       li.innerText = `${elm1.name} : ${elm1.aliases.join(" ")}`;
       personalDetailUL.append(li);
     })
