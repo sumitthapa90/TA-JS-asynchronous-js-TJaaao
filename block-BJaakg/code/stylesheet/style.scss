@@ -1,56 +1,106 @@
 @import "reset";
 
-// MY CSS
+// spinner
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
+.donut {
+  display: inline-block;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #7983ff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: donut-spin 1.2s linear infinite;
+}
+// custum
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
 .container {
+  position: absolute;
   width: 100%;
   max-width: 1200px;
   padding: 0 2rem;
   margin: 0 auto;
-}
-.flex {
-  display: flex;
-  justify-content: space-between;
-}
-body {
-  background-color: #765aac;
-}
-header {
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 600;
-  margin-top: 2rem;
+
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 1)
+  );
   h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
     margin-bottom: 2rem;
   }
+  h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
-
-.box {
-  width: 300px;
-  background-color: white;
-  padding: 1.5rem;
-
+.btn {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 2rem;
+}
+.list {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+  background-color: skyblue;
+}
+.book-list {
   border: 1px dashed red;
-}
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
-}
-p {
+  width: 300px;
+  padding: 1rem;
   margin-top: 1rem;
 }
-button {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding: 0.7rem;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
+
+.modalWindow {
+  background-color: #3b898a;
+  margin-top: 1rem;
+  position: relative;
+
+  left: 1rem;
+
+  span {
+    font-size: 1.7rem;
+    border: 1px solid white;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    display: inline-block;
+    text-align: right;
+  }
+  li {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  ul {
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
 }

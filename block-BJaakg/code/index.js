@@ -1,32 +1,54 @@
-const url = "https://www.anapioficeandfire.com/api/books";
+let rootUL = document.querySelector(".book-list");
+let modalWindow = document.querySelector(".modalWindow");
+let modalClose = document.querySelector(".modalClose");
+let personalDetailUL = document.querySelector(".personalDetail");
+let openButton = document.querySelector(".btn");
 
-let container = document.querySelector(".container");
-let elm = document.querySelector(".box");
+const bookURL = "https://www.anapioficeandfire.com/api/books";
 
-{
-  /* <li>
-  <h2>A Game of Thrones</h2>
-  <p>George R. R. Martin</p>
-  <button>Show Charaters(434)</button>
-</li>; */
+function fetchData() {
+  fetch(bookURL)
+    .then((res) => res.json())
+    .then((data) => displayUI(data));
 }
 
-function searies(sources) {
-  let elm = "";
-  sources.forEach((source) => {
+fetchData();
+
+function displayPopUp(characters) {
+  Promise.all(
+    characters.map((elm) => fetch(elm).then((res) => res.json()))
+  ).then((data1) =>
+    data1.forEach((elm1) => {
+      ``let li = document.createElement("li");
+      li.innerText = `${elm1.name} : ${elm1.aliases.join(" ")}`;
+      personalDetailUL.append(li);
+    })
+  );
+}
+
+function displayUI(books) {
+  rootUL.innerHTML = "";
+
+  books.forEach((book) => {
     let li = document.createElement("li");
     let h2 = document.createElement("h2");
-    h2.innerText = source.name;
+    h2.innerText = book.name;
     let p = document.createElement("p");
-    p.innerText = source.authors;
+    p.innerText = book.authors.join(" ");
     let button = document.createElement("button");
-    button.innerText = source.numberOfPages;
+    button.classList.add("btn");
+    button.innerText = `Show Character(${book.characters.length})`;
+    button.addEventListener("click", () => {
+      modalWindow.style.display = "block";
+      displayPopUp(book.characters);
+      rootUL.style.display = "none";
+      modalWindow.querySelector(".modalClose").addEventListener("click", () => {
+        modalWindow.style.display = "none";
+        rootUL.style.display = "block";
+      });
+    });
     li.append(h2, p, button);
-    elm.append(li);
-    container.append(elm);
+    console.log(li);
+    rootUL.append(li);
   });
 }
-
-fetch(url)
-  .then((res) => res.json())
-  .then((data) => console.log(data));
