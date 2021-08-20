@@ -1,0 +1,53 @@
+@import "reset";
+
+//
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+body {
+  background: linear-gradient(to left, black, cyan);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  margin-top: 2rem;
+}
+.container {
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-family: "Caveat", cursive;
+  border: 1px solid;
+  margin: 0 500px;
+  background-color: skyblue;
+  font-size: 2rem;
+  .class-control {
+    width: 300px;
+    font-family: "Caveat", cursive;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid red;
+    margin-bottom: 1rem;
+  }
+  li {
+    margin-top: 1rem;
+  }
+  label {
+    margin-left: 5rem;
+  }
+  span {
+    margin-left: 5rem;
+  
+    color: red;
+    font-weight: 600;
+  }
+}
